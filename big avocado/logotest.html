@@ -1,0 +1,35 @@
+<html>
+<head>
+<style>
+ div.bound {display:block; border-style:solid;
+ width:502;height:302px;}
+ div.move { position:absolute; }
+</style>
+<script language="javascript">
+width = screen.availwidth;
+var x = 5; 
+var y = 5;
+var max_x = 400; 
+var max_y = 200; 
+var xoffset = 10; 
+var yoffset = 10; 
+var TimeID;
+function moveLogo() {
+  x = x + xoffset;
+  y = y + yoffset;
+  document.getElementById("msucs").style.top = y+'px';
+  document.getElementById("msucs").style.left = x+'px';
+  if ((x+xoffset > max_x) || (x+xoffset < 0)) xoffset *=-1;
+  if ((y+yoffset > max_y) || (y+yoffset < 0)) yoffset *=-1;
+  TimeID = window.setTimeout('moveLogo()',100);
+}
+</script>
+</head>
+<body onload="moveLogo()">
+<div class="bound">
+ <div id="msucs" class="move">
+  <img src="img/indy.png" onmouseover="clearTimeout(TimeID)" onmouseout="TimeID=setTimeout('moveLogo()',100)"/>
+ </div>
+</div>
+</body>
+</html>
